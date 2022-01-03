@@ -1,0 +1,13 @@
+n = input()
+
+result = int(n[0])
+
+for i in range(1, len(n)):
+  num = int(n[i])
+  #두 수중에서 하나라도 1이하라면 더해주고 아니면 곱해준다.
+  if num <=1 or result <=1:
+    result += num
+  else :
+    result *= num
+
+print(result)

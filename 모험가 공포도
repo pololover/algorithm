@@ -1,0 +1,15 @@
+n = int(input())
+data = list(map(int, input().split()))
+data.sort()
+result = 0 #전체 모험가 수 
+count = 0 #현재 모험가 수
+
+#공포도 변수 i
+for i in data:
+  count +=1
+  #공포도 보다 count가 많다면 리셋.
+  if count >=i:
+    result +=1
+    count = 0
+
+print(result)

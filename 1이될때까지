@@ -1,0 +1,17 @@
+n,k = map(int, input().split())
+
+result = 0
+
+while True:
+  //빼는 부분
+  target = (n // k) * k
+  result += n-target
+  n = target
+  //나누는 부분
+  if n < k:
+    break
+  result +=1
+  n //=k
+  
+  
+  

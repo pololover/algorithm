@@ -1,0 +1,13 @@
+n = input()
+data = list(map(int,input().split()))
+data.sort()
+
+#target을 1부터 시작
+target = 1
+for x in data:
+  #target보다 coin이 크다면 만들 수 없는 수.
+  if target < x:
+    break
+  target +=x
+
+print(target)

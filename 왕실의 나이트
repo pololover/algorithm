@@ -1,0 +1,18 @@
+data = input()
+alpha = data[0]
+row = data[1]
+column = int(ord(data[0]))-int(ord('a'))+1 #아스키코드로 숫자설정
+
+move_types = [[1,2], [-1,2], [2,1], [2,-1], [-1,-2], [1,-2], [-2,-1], [-2,1]] #9가지 방향 정의
+
+
+x,y = int(row), column
+count = 0
+for i in range(len(move_types)):
+  nx = x+ move_types[i][0]
+  ny = y+ move_types[i][1]
+  if nx<1 or ny<1 or nx>8 or ny>8:
+    continue
+  count+=1
+
+print(count)

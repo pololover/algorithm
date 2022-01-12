@@ -1,0 +1,20 @@
+n = int(input())
+list = list(input().split())
+dx = [0,0,-1,1]
+dy = [-1,1,0,0]
+
+x,y = 1,1
+
+move_types = ['L','R','U','D']
+
+for i in list: #정해놓은 위치를 돌면서
+  for j in range(len(move_types)): #4가지 방향을 다돈다
+    if i == move_types[j]: #방향이 같은게 있다면 nx,ny부여
+      nx = x + dx[j]
+      ny = y + dy[j]
+  if nx<1 or ny<1 or nx>n or ny>n: #넘어가면 continue로 지나감.
+    continue
+  x,y = nx,ny #넘어가지 않은것들은 nx,ny를 계속해서 리셋
+
+print(x,y)
+

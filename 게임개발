@@ -1,39 +1,49 @@
-n, m = map(int, input().split())
+n, m = map(int,input().split())
 
-d = [[0]*m for _ in range(n)] #직사각형에 대해서 가본 곳 정의
 x,y,direction = map(int, input().split())
-d[x][y] =1
 
+visit = [[0]*m for _ in range(n)]
+visit[x][y] = 1
+
+dx= [-1,0,1,0]
+dy= [0,1,0,-1]
+
+direction_type =[3,2,1,0] #서,남,동,북
 array = []
-for i in range(n) :
-  array.append(list(map(int, input().split())))  #직사각형 배열로 받기 
 
-dx = [-1, 0, 1, 0]
-dy = [0, 1, 0, -1]
+#2차원 배열로 직사각형을 만들려면 가로먼저 만든 후 세로에 대해 for문.
 
-def turn_left():  #for문을 direction 숫자로 다룸.
-  global direction
-  direction -= 1
+#종단만큼 for문을 돌리면서 각각 list로 넣어준다. 그리고 row로 할때는 반드시 range로 넣어야 돌아간다. range가 iterable을 지원해주는 함수이기 때문.
+for i in range(n):
+  array.append(list(map(int, input().split())));
+
+
+def turn_left():
+  global direction 
+  direction -=1
   if direction == -1:
     direction = 3
 
+
 count = 1
-turn_time =0  #turn time이 4가되면 뒤로 가야함.
-while True :
-  turn_left()
+turn_count = 0 #돌은 횟수
+while True:
+  turn_left();
+  turn_count += 1
   nx = x+ dx[direction]
   ny = y+ dy[direction]
-  if d[nx][ny] == 0 and array[nx][ny] == 0:
-    d[nx][ny] = 1
+
+  #바다가 아니면서 방문하지 않았다면
+  if array[nx][ny] !=1 and visit[nx][ny] != 1:
+    visit[nx][ny] = 1
     x = nx
     y = ny
-    count +=1
-    turn_time= 0
+    count += 1
+    turn_count = 0
     continue
-  else :
-    turn_time += 1
-  if turn_time == 4 :
-    nx = x - dx[direction]
+  
+  if turn_count == 4:
+    nx= x - dx[direction]
     ny = y - dy[direction]
 
     if array[nx][ny] == 0:
@@ -41,6 +51,7 @@ while True :
       y = ny
     else :
       break
-    turn_time = 0
+    turn_count = 0
+
 
 print(count)

@@ -1,0 +1,18 @@
+data = input()
+
+length = len(data)
+focus_length = int(len(data)/2)
+
+sum0 = 0
+sum1 = 0
+
+for i in range(focus_length):
+  sum0 += int(data[i])
+
+for j in range(focus_length, length):
+  sum1 += int(data[j])
+
+if sum0 == sum1:
+  print('LUCKY')
+else :
+  print('FAIL')

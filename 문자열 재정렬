@@ -1,0 +1,15 @@
+data = input()
+
+sum = []
+sumNumber = 0
+for i in range(len(data)):
+  if data[i].isalpha():
+    sum.append(data[i])
+  else :
+    sumNumber += int(data[i])
+
+sum.sort() #str은 sort가 안되기에 배열로 정의해서 sort해준다.
+sum.append(str(sumNumber))
+
+print(''.join(sum)) #마지막에 문자열에 합침으로써 문자열로 출력
+    

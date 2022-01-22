@@ -1,0 +1,38 @@
+from collections import deque
+
+n,m = map(int,input().split())
+
+graph = []
+for i in range(n):
+  graph.append(list(map(int,input())))
+
+dx = [-1,1,0,0] #상,하,좌,우
+dy = [0,0,-1,1]
+
+#dfs든 bfs든 상하좌우 개념을 빠르게 생각하는 게 중요
+
+#bfs는 재귀로, bfs는 while q로 정형화시켜서 접근하자.
+def bfs(x,y):
+  queue = deque()
+  queue.append((x,y))
+  while queue:
+    x,y = queue.popleft()
+    #뽑은 값에 대하여 상하좌우만 돈다.
+    for i in range(4):
+      nx = x+ dx[i]
+      ny = y+ dy[i]
+      #넘어가면 다음걸로
+      if nx < 0 or nx >=n or ny <0 or ny >=m:
+        continue
+      #벽이라면 다음걸로
+      if graph[nx][ny] ==0:
+        continue
+      #최초로 가본 곳만 업데이트. 1보다 큰값이었다면 결국 그 길로가면 막히든 가든 그것이 최초.
+      if graph[nx][ny] ==1:
+        graph[nx][ny] = graph[x][y] +1
+        queue.append((nx,ny))
+  
+  return graph[n-1][m-1]
+
+
+print(bfs(0,0))

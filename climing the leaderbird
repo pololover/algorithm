@@ -4,21 +4,22 @@ ranked = list(map(int,input().split()))
 m = int(input())
 player = list(map(int,input().split()))
 
-ranked = sorted(set(ranked), reverse=True)  #set을 쓰면 중복값이 없어진다.
+ranked = sorted(set(ranked), reverse=True) #set으로 중복을 제거하는 기법. rank의 기준을 보고 중복을 제거해도되겠구나를 빠르게 catch해야함.
+
+#player만큼 for문 돌리고 인덱스보다 작은값을 가질때까지 index를 줄여주면서 값을 탐색
 index = len(ranked)
+#100 50 40 20 10
+#5 25 50 120
 res = []
 for a in player:
-  while(ranked[index-1] <= a and index > 0):
-    index -=1
-  
+  while(a>=ranked[index-1] and index>0):
+    index-=1
   if(index <0):
     res.append(1)
     continue
-  
   res.append(index+1)
 
 for i in range(len(res)):
   print(res[i])
-
 
 

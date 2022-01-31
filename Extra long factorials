@@ -1,0 +1,10 @@
+#파이썬은 자체적으로 Big int를 제공한다.
+n = int(input())
+sum = 1
+def recursive(n):
+  if n==1:
+    return 1
+  else :
+    return n*recursive(n-1)
+
+print(recursive(n))

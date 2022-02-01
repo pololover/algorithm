@@ -1,0 +1,38 @@
+q = int(input())
+#key point: 컨테이너안의 숫자갯수와 타입갯수가 같다면 그타입으로 다 바꿀 수 있다.
+posTate = []
+for i in range(q):
+  n = int(input())
+  array = [[0]*n for _ in range(n)]
+  for i in range(n):
+    data = list(map(int,input().split())) #임의의 수는 list로 받기.
+    for j in range(n):
+      array[i][j] = data[j]
+  sumrow = [0]*n
+  sumcol = [0]*n
+  for i in range(n):
+    for j in range(n):
+      sumrow[i] += array[i][j]
+  for i in range(n):
+    for j in range(n):
+      sumcol[i] += array[j][i]
+  sumrow.sort() #sort는 습관화.
+  sumcol.sort()
+
+  
+  while(i<n): #두개의 경우에 break를 걸어주어야함.
+    if(sumrow[i] != sumcol[i]):
+      posTate.append(0)
+      break
+      i+= 1
+    elif(i==n-1):
+      posTate.append(1)
+      break
+
+for i in range(len(posTate)):
+  if(posTate[i] == 0):
+    print('Impossible')
+  else:
+    print('Possible')
+
+

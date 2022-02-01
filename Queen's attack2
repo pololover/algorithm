@@ -1,0 +1,40 @@
+n,k = map(int,input().split())
+row, col = map(int,input().split())
+
+visited = [[0]*(n+1) for _ in range(n+1)]
+
+for i in range(k):
+  a,b = map(int, input().split())
+  visited[a][b] = 1
+  
+print(visited)
+
+dx = [0,1,1,1,0,-1,-1,-1] #동서남북
+dy = [1,1,0,-1,-1,-1,0,1]
+ #dfs는 nx,ny값이 유효한지 먼저 체크한뒤에 배열을 검사해주는 게 좋다. 
+def dfs(x,y):
+  count = 0
+  for i in range(8):
+    nx = x + dx[i]
+    ny = y + dy[i]
+    if(nx>n or ny >n):
+      continue
+    if(nx>0 and ny>0 and visited[nx][ny] !=1):
+      count +=1
+    else:
+      continue
+    while(True):       
+      nx = nx+dx[i]
+      ny = ny+dy[i]
+      print(nx,ny)
+      if(nx>n or ny>n or nx<1 or ny<1):
+        break
+      if(visited[nx][ny] != 1):
+        visited[nx][ny] =1 
+        count +=1
+      else :
+        break
+  
+  return count
+
+print(dfs(row,col))

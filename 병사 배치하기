@@ -1,0 +1,13 @@
+n = int(input())
+array = list(map(int,input().split()))
+
+array.reverse()
+
+dp = [1]*n
+#LIS 최장 증가 수열. 갈수록 증가하는 수열에 대해서 다이나믹 프로그래밍 쓰는 기법.
+for i in range(1,n):
+  for j in range(0,i):
+    if array[i] > array[j]:
+      dp[i] = max(dp[i], dp[j]+1)
+
+print(n-max(dp))

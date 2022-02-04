@@ -25,3 +25,36 @@ for i in range(n):
       result +=1
 
 print(result)
+
+두번째 풀이
+#dfs문제 풀 때 들어온 x,y의 값이 유효한지 보고 방문하지않은거라면 수행으로 하는 것도 좋은방법.
+n,m =map(int, input().split())
+graph = []
+visited =[[False]*(m) for _ in range(n)]
+
+for i in range(n):
+  graph.append(list(map(int,input())))
+
+dx = [0,0,1,-1]#동서남북
+dy = [1,-1,0,0]
+def dfs(x,y):
+  if x<=-1 or x>=n or y<= -1 or y>=m:
+    return False
+  if graph[x][y] == 0:
+    graph[x][y] = 1
+    dfs(x-1,y)
+    dfs(x,y-1)
+    dfs(x+1,y)
+    dfs(x,y+1)
+    return True
+  return False
+
+
+
+result = 0
+for i in range(n):
+  for j in range(m):
+    if dfs(i,j)==True:
+      result +=1
+
+print(result)

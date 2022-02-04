@@ -18,3 +18,24 @@ for i in list: #정해놓은 위치를 돌면서
 
 print(x,y)
 
+두번째 풀이
+#경로에 대한 방향이 주어졌을 때는 방향배열을 설정해놓는 게 좋다.
+n = int(input())
+array = list(input().split())
+
+graph = [[0]*(n+1) for _ in range(n+1)]
+
+dx = [0,0,-1,1]
+dy = [-1,1,0,0]
+move_types = ['L','R','U','D']
+x,y = 1,1
+for i in array:
+  for j in range(4):
+    if i==move_types[j]:
+      nx = x+dx[j]
+      ny = y+dy[j]
+      if nx>0 and ny>0 and nx<n+1 and ny<n+1:
+        x,y = nx,ny
+
+
+print(x,y)

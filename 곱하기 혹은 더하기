@@ -11,3 +11,17 @@ for i in range(1, len(n)):
     result *= num
 
 print(result)
+
+
+
+두번쨰 풀이
+s = list(map(int,input()))
+
+sum = 0
+for a in s:
+  if a==0 or a==1 or sum==0:
+    sum +=a
+  else:
+    sum *=a
+
+print(sum)

@@ -13,3 +13,22 @@ for i in data:
     count = 0
 
 print(result)
+
+
+2번째 풀이
+논리적으로 접근
+현재 확인하는 모험가 수가 공포도보다 크다면 result+=1
+n = int(input())
+array = list(map(int, input().split()))
+
+array.sort()
+result = 0 #총 그룹의 수
+count = 0# 현재 그룹에 포함된 모험가의 수
+
+for a in array:
+  count+=1
+  if count>=a:
+    count = 0
+    result +=1
+
+print(result)

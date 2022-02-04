@@ -14,4 +14,23 @@ while True:
   n //=k
   
   
+2번째  풀이
+n,k = map(int,input().split())
+
+result =0 
+
+while n>1:
+  target =  (n//k)*k
+  result += n-target
+  n = target
+  if n <k:
+    break #k보다 작을때는 다 1로 빼지기때문에.
+  result +=1
+  n = n//k
+
+#n이 k보다 작은 경우에 한에서 1씩 다 빼주는 연산.
+result += (n-1)
+print(result)
+
+
   

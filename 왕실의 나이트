@@ -16,3 +16,25 @@ for i in range(len(move_types)):
   count+=1
 
 print(count)
+
+2번째 풀이
+
+s = input()
+#a의 아스키코드는 97
+#ord함수를 이용하면 아스키코드로 변환가능
+col = ord(s[0])-96
+row = int(s[1])
+
+move_types=[(1,2),(-1,2),(2,-1), (2,1), (-1,-2),(1,-2), (-2,-1), (-2,1)]
+
+graph= [[0]*(9)for _ in range(9)]
+count =0
+x,y = row, col
+for i in move_types:
+  nx = x+ i[0]
+  ny = y+ i[1]
+  if nx<1 or ny <1 or nx>8 or ny>8:
+    continue
+  count +=1
+
+print(count)

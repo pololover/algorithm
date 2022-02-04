@@ -13,3 +13,19 @@ sum.append(str(sumNumber))
 
 print(''.join(sum)) #마지막에 문자열에 합침으로써 문자열로 출력
     
+두번째 풀이
+#숫자와 문자열이 섞여있는 배열은 print(''.join)기법을 사용할 때 오류가 난다. 그러므로 배열을 문자열로 통합시켜야 한다.
+#nu이 0이 아니라면 추가하도록하자. 괜히 0이 붙으면 또 이상하니까.
+s = input()
+
+alpha_array = []
+num =0
+for i in range(len(s)):
+  if s[i].isalpha():
+    alpha_array.append(s[i])
+  else:
+    num += int(s[i])
+alpha_array.sort()
+if num !=0:
+  alpha_array.append(str(num))
+print(''.join(alpha_array))

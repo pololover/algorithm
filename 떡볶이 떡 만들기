@@ -21,3 +21,32 @@ while(start <=end):
     end = mid-1
 
 print(result)
+
+
+두번째 문제
+#이진탐색을 while문으로 이용해서 구현할 생각도 해야함. 주어진 범위가 너무크다면 이진탐색을 바로 생각해보고,
+갈 수록 최적화 값이기 때문에 result를 저장하는 방식으로 구현.
+n,m = map(int,input().split())
+
+array = list(map(int,input().split()))
+
+start = 0
+end = max(array)
+result = 0
+while (start<=end):
+  mid = (start+end)//2
+  total = 0
+  for x in array:
+    if x>mid:
+      total += x-mid
+  
+  if total <m:
+    end = mid-1
+  else :
+    result = mid
+    start = mid+1
+
+print(result)
+
+
+

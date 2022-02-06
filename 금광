@@ -30,3 +30,40 @@ for tc in range(int(input())):
 for i in range(len(results)):
   print(results[i])
 
+
+두번째 풀이
+#포인트는 가로를 기준으로가 아닌 세로를 기준으로 배열진행을 하는 것, index 슬라이싱을 통해 split한 값을 dp배열에 담는 것.
+tc= int(input())
+scores = []
+for i in range(tc):
+  n,m = map(int,input().split())
+  data = list(map(int,input().split()))
+  index = 0
+  dp = []
+  
+  for i in range(m):
+    dp.append(data[index:index+m])
+    index +=m
+  
+  for j in range(1,m):
+    for i in range(n):
+      if i==0: left_up = 0
+      else: left_up = dp[i-1][j-1]
+      if i==n-1: left_down=0
+      else: left_down = dp[i+1][j-1]
+      left = dp[i][j-1]
+      dp[i][j] = dp[i][j] + max(left,left_up, left_down)
+  
+  max_score = 0
+  for i in range(n):
+    if max_score < dp[i][m-1]:
+      max_score = dp[i][m-1]
+  
+  scores.append(max_score)
+  
+for i in range(len(scores)):
+  print(scores[i])
+
+
+  
+

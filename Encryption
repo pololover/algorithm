@@ -1,0 +1,15 @@
+#col만큼 이동하며 col만큼 증가하는 range 변수 3개를 이용. 
+#항상 col이 row보다1이 크다고 생각했는데 16, 36과같은 제곱근이 있는 경우에는 +1이 성립되지 않음을 앎. -> floor나 ceil을 통해 확실하게 정하는 게 좋다.
+import math
+s = input()
+length = len(s)
+len_sqrt = math.sqrt(length)
+row = math.floor(len_sqrt)
+col = math.ceil(len_sqrt)
+answer = ""
+for i in range(0,col):
+  for j in range(i,length,col):
+    answer += s[j]
+  answer += " "
+
+print(answer)

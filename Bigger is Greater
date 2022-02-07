@@ -1,0 +1,33 @@
+#핵심은 next_permutations를 이용하는 것. 
+
+tc = int(input())
+def next_permutations(arr):
+  i,j = len(arr)-1, len(arr)-1
+
+  while i>0 and arr[i-1]>=arr[i]:
+    i-=1
+  if i==0:
+    return False
+  while arr[i-1]>=arr[j]:
+    j-=1
+  arr[i-1], arr[j] = arr[j], arr[i-1]
+
+  k = len(arr)-1
+  while i<k:
+    arr[i],arr[k] = arr[k],arr[i]
+    i+=1
+    k-=1
+  return arr
+
+results = []
+for i in range(tc):
+  s = list(input())
+  result = next_permutations(s)
+  if result == False:
+    results.append("no answer")
+  else:
+    answer = ''.join(result)
+    results.append(answer)
+
+for result in results:
+  print(result)

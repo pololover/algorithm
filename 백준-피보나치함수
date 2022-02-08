@@ -1,0 +1,24 @@
+#0과 1이 나오는 규칙을 찾아 배열에 담고 후에 호출.
+
+cnt0 = [1,0] #0이 나오는 횟수
+cnt1 = [0,1] #1이 나오는 횟수.
+tc = int(input())
+total_arr = []
+for i in range(tc):
+  tr = int(input())
+  if tr==0:
+    total_arr.append((1,0))
+  elif tr==1:
+    total_arr.append((0,1))
+  else:
+    for i in range(2,tr+1):
+      cnt0.append(cnt0[i-1]+ cnt0[i-2])
+      cnt1.append(cnt1[i-1]+ cnt1[i-2])
+    total_arr.append((cnt0.pop(), cnt1.pop()))
+    cnt0 = [1,0]
+    cnt1 = [0,1]
+
+for i in total_arr:
+  print(i[0], i[1])
+      
+

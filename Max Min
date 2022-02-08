@@ -1,0 +1,17 @@
+#Max - Min값이 최소가 되는 경우는 sort했을때 배열의 특정인덱스값이 max, 시작부분이 min으로 볼 수 있고 전체적으로 탐색하면서 값을 초기화시켜주면 된다. 
+#여기서 일렬도 나열된 값만 탐색해도 되는 이유는 멀리떨어진 값과 비교해도 그 값보다는 최소일 수 밖에없는 sort성질이 있기 때문이다.
+
+n = int(input())
+k = int(input())
+arr = []
+
+for i in range(n):
+  arr.append(int(input()))
+
+arr.sort()
+interval_sum = int(1e9)
+for i in range(n-k+1):
+  maxK = i+k-1
+  interval_sum = min(interval_sum, arr[maxK]-arr[i])
+
+print(interval_sum)

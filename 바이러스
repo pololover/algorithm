@@ -1,0 +1,24 @@
+#문제를 잘봐서 간선만큼 그래프를 세우는 게 아닌 정점을 기준으로 그래프를 구현.
+#방향인지 무방향인지 확인 후 간선 체크
+
+n = int(input())
+arr_len = int(input())
+m = [[]for _ in range(n+1)]
+
+visited = [False]*(n+1)
+
+for i in range(arr_len):
+  a,b = map(int,input().split())
+  m[a].append(b)
+  m[b].append(a)
+cnt = 0  
+def dfs(start):
+  global cnt
+  visited[start] = True
+  for i in m[start]:
+    if not visited[i]:
+      cnt+=1
+      dfs(i)
+
+dfs(1)
+print(cnt)

@@ -1,0 +1,12 @@
+#지금까지 나온 값 중에 최소값만을 곱해주면 된다는 아이디어.
+n = int(input())
+distance = list(map(int, input().split()))
+cost = list(map(int, input().split()))
+sum = 0
+minValue = cost[0]
+for i in range(n-1):
+  if minValue > cost[i]:
+    minValue = cost[i]
+  sum += minValue * distance[i]
+
+print(sum)
